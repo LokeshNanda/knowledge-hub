@@ -5,7 +5,7 @@ tags: [fine-tuning, unsloth, lora, qwen, sft-trainer, peft]
 source: "Unsloth Qwen 2.5 finetuning Colab notebook (github.com/unslothai/unsloth)"
 created: 2026-07-11
 updated: 2026-07-11
-status: seed
+status: growing
 ---
 
 # Fine-tuning an LLM with Unsloth (Qwen 2.5 + LoRA walkthrough)
@@ -20,6 +20,16 @@ inference speed. Peak GPU memory during training was ~7.9 GB — a 7B model
 fine-tuned comfortably on free-tier hardware.
 
 ## How it works
+**The big picture first.** A language model is a giant function with
+billions of numbers (weights) that predicts the next token. Training means:
+show it text, let it predict, measure how wrong it was (the **loss**), and
+nudge the weights slightly to be less wrong — repeated thousands of times.
+Fine-tuning is that same loop run on *your* examples so the model's behavior
+shifts toward your task. Everything in the notebook exists to serve that
+loop. One **step** = take a batch of examples → model predicts every next
+token → compute loss → compute gradients (which direction to nudge each of
+the ~40M trainable LoRA parameters) → nudge them.
+
 The pipeline, end to end:
 
 ```
@@ -55,7 +65,23 @@ correctly and emitted `<|endoftext|>` cleanly.
   model trainable on 14.7 GB at all. Full fine-tuning of 7B params in fp16
   would need well over 80 GB with optimizer states.
 - **`adamw_8bit`** quantizes optimizer state (normally 2× fp32 copies per
-  param) — another large memory win with negligible quality loss.
+  param) — another large memory win with negligible quality loss. Safe to
+  accept as a default.
+- **`learning_rate = 2e-4` is the single most important hyperparameter** —
+  the size of each nudge. Too high: loss spikes or oscillates and the model
+  gets worse. Too low: nothing happens. 2e-4 is a good LoRA default, but
+  full fine-tuning uses ~100x smaller rates — never copy numbers across
+  contexts.
+- **`gradient_accumulation_steps = 4`** is a memory trick: process 4 small
+  batches, accumulate their gradients, update once. You get the smoother,
+  more stable training of effective batch 8 at the memory cost of batch 2.
+- **`warmup_steps = 5`** ramps the learning rate up from near zero,
+  preventing violent updates in the first steps while everything is
+  unstable.
+- **Epochs vs steps:** a real run replaces `max_steps` with
+  `num_train_epochs = 1-3` (one epoch = one full pass over the dataset).
+  More than ~3 epochs on a small dataset usually means memorization, not
+  learning.
 - **`use_gradient_checkpointing="unsloth"`** is Unsloth's own variant,
   claimed ~30% less VRAM than standard checkpointing.
 - **Unsloth's speedup** comes from hand-written Triton kernels and patched
@@ -80,6 +106,18 @@ correctly and emitted `<|endoftext|>` cleanly.
   template.
 - Must call `FastLanguageModel.for_inference(model)` before generating —
   easy to forget after training.
+- **Reading the loss curve:** healthy training starts around 1.5-3,
+  decreases quickly, then flattens near 0.5-1.0. Loss jumping around
+  violently = learning rate too high; loss plunging toward ~0.1 = the model
+  is memorizing the dataset. Intuition here comes from deliberately breaking
+  runs and watching what happens.
+- **Inference `temperature` should match the task:** it controls randomness,
+  and for tasks with one right answer (SQL generation, extraction) you want
+  it low (0-0.2), not the chatty 0.7 defaults notebooks ship with.
+- A common variant of this notebook uses **Qwen2.5-7B-Instruct** and formats
+  data with `tokenizer.apply_chat_template` instead of the Alpaca template —
+  see [chat templates & data formatting](chat-templates-and-training-data-formatting.md)
+  for why that distinction matters.
 
 ## Where it shows up
 - The standard entry point for anyone fine-tuning open-weight LLMs on
@@ -92,13 +130,13 @@ correctly and emitted `<|endoftext|>` cleanly.
   math and 4-bit quantization are actually doing.
 - [Exporting fine-tuned LLMs: adapters vs merged vs GGUF](finetuned-llm-export-formats.md)
   — what to do with the model after training.
+- [Chat templates & training-data formatting](chat-templates-and-training-data-formatting.md)
+  — the data-prep stage, where beginner fine-tunes most often silently fail.
 
 ## Open questions
 - *How* does Unsloth achieve 2x speed — kernel fusion? avoiding double
   dequantization? Worth a `/deep-dive unsloth internals`.
 - What do `use_rslora` (rank-stabilized LoRA) and `loftq_config` do? Both
   exposed in the config, both left at defaults, neither explained.
-- How is train-on-responses-only masking implemented in TRL, and how much
-  does it matter in practice?
 - RoPE scaling ("kaiokendev's method") lets `max_seq_length` exceed native
   context — mechanism not understood yet.

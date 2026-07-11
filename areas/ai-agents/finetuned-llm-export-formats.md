@@ -5,7 +5,7 @@ tags: [fine-tuning, lora, gguf, deployment, quantization]
 source: "Unsloth Qwen 2.5 finetuning Colab notebook (github.com/unslothai/unsloth)"
 created: 2026-07-11
 updated: 2026-07-11
-status: seed
+status: growing
 ---
 
 # Exporting fine-tuned LLMs: adapters vs merged vs GGUF
@@ -23,7 +23,7 @@ From an Unsloth-trained model:
 
 | Path | Call | Artifact | Loads with |
 |---|---|---|---|
-| Adapters only | `model.save_pretrained("lora_model")` | tens of MB (just B·A matrices) | Unsloth/PEFT + base model downloaded separately |
+| Adapters only | `model.save_pretrained("lora_model")` | ~100-500 MB (just B·A matrices) vs ~14 GB for the full model | Unsloth/PEFT + base model downloaded separately |
 | Merged | `model.save_pretrained_merged(..., save_method="merged_16bit" or "merged_4bit")` | full model weights, LoRA folded into `W` | any HF-compatible stack, incl. vLLM |
 | GGUF | `model.save_pretrained_gguf(...)` | single quantized file | llama.cpp, Ollama, GPT4All |
 
@@ -42,7 +42,8 @@ that keep sensitive tensors at Q6_K).
 - **Merged 16-bit** trades disk (full model size) for zero runtime
   dependencies — production serving engines want plain weights.
 - **GGUF** targets CPU/consumer inference: aggressive quantization plus a
-  single-file format the llama.cpp ecosystem can mmap.
+  single-file format the llama.cpp ecosystem can mmap. Practical upside:
+  demoing a fine-tuned model to clients on modest hardware via Ollama.
 - The notebook discourages loading adapters via vanilla
   `AutoPeftModelForCausalLM` — slower and no 4-bit download support — prefer
   reloading through Unsloth's `from_pretrained`.
