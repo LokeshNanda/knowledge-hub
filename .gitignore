@@ -1,0 +1,3 @@
+# Raw drops and processed originals stay local; only organized notes are versioned
+inbox/*
+!inbox/.gitkeep
