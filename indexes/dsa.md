@@ -1,6 +1,10 @@
 # DSA — map of content
 
-Organized by pattern. ✅ = clean unaided solve, ⚠️ = struggled / needed help.
-Tally per pattern: clean / total.
+LeetCode entries organized by pattern (✅ = clean unaided solve, ⚠️ = struggled / needed help);
+concept notes listed separately. SQL LeetCode problems live in [indexes/sql.md](./sql.md).
 
-*(No notes yet — SQL LeetCode problems now live in [indexes/sql.md](./sql.md); LC 550 moved there on 2026-07-12.)*
+## Concepts: data structures from scratch
+- [Dynamic Array from Scratch (how Python's list works)](../areas/dsa/dynamic-array-from-scratch.md) — capacity vs size, doubling → amortized O(1) append, shrink-at-1/4 rule; includes the reusable skeleton for future from-scratch builds.
+
+## LeetCode patterns
+*(none yet)*
