@@ -1,6 +1,6 @@
 ---
 title: "LC 550: Game Play Analysis IV"
-area: dsa
+area: sql
 tags: [sql, window-functions, first-event-anchor, date-arithmetic, difficulty-medium]
 source: "https://leetcode.com/problems/game-play-analysis-iv/"
 created: 2026-07-12
@@ -77,7 +77,7 @@ FROM firsts;
 When the problem anchors to a *first* event, compare against `MIN()` per group — `LEAD`/`LAG` finds *any* adjacency, not adjacency to the first. And never write `date + 1` in MySQL; it's integer arithmetic that breaks at month boundaries — use `DATE_ADD`.
 
 ## Similar problems in vault
-- (none yet — first SQL/retention problem logged)
+- [LC 570: Managers with at Least 5 Direct Reports](./lc-0570-managers-with-at-least-5-direct-reports.md) — also per-entity aggregation, but a simple count threshold via self-join instead of a first-event anchor.
 
 ## Solution
 ```sql
