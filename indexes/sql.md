@@ -8,3 +8,6 @@ Tally per pattern: clean / total.
 
 ## Aggregation: group-by / having on a key (1/1 clean)
 - ✅ [LC 570: Managers with at Least 5 Direct Reports](../areas/sql/lc-0570-managers-with-at-least-5-direct-reports.md) — self-join on managerId, HAVING COUNT ≥ 5; first attempt grouped by name instead of id (non-unique names merge entities), self-corrected fast.
+
+## Aggregation: duplicate vs unique classification (0/1 clean)
+- ⚠️ [LC 585: Investments in 2016](../areas/sql/lc-0585-investments-in-2016.md) — HAVING COUNT > 1 / = 1 to build duplicated- and unique-value sets, tuple `(lat, lon) IN` membership; solved unassisted but only one day after studying the solution — needs a cold re-solve.

@@ -57,6 +57,7 @@ It beats the self-join version only marginally (no join before the aggregate), b
 
 ## Similar problems in vault
 - [LC 550: Game Play Analysis IV](./lc-0550-game-play-analysis-iv.md) — also per-entity aggregation, but anchored to `MIN()` with date arithmetic instead of a count threshold.
+- [LC 585: Investments in 2016](./lc-0585-investments-in-2016.md) — same GROUP BY / HAVING membership-set machinery, used to classify values as duplicated vs unique instead of thresholding child counts.
 
 ## Solution
 ```sql
