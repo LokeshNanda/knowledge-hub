@@ -59,6 +59,7 @@ It beats the self-join version only marginally (no join before the aggregate), b
 - [LC 550: Game Play Analysis IV](./lc-0550-game-play-analysis-iv.md) — also per-entity aggregation, but anchored to `MIN()` with date arithmetic instead of a count threshold.
 - [LC 585: Investments in 2016](./lc-0585-investments-in-2016.md) — same GROUP BY / HAVING membership-set machinery, used to classify values as duplicated vs unique instead of thresholding child counts.
 - [LC 602: Friend Requests II — Who Has the Most Friends](./lc-0602-friend-requests-ii-most-friends.md) — also a per-entity appearance count, but the entity must first be unpivoted out of two columns with `UNION ALL`.
+- [LC 608: Tree Node](./lc-0608-tree-node.md) — same self-referencing parent key; there the child side merely needs to *exist* to label a node `Inner`, no counting.
 
 ## Solution
 ```sql
