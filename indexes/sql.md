@@ -15,5 +15,8 @@ Tally per pattern: clean / total.
 ## Classification: CASE + membership subquery (0/1 clean)
 - ⚠️ [LC 608: Tree Node](../areas/sql/lc-0608-tree-node.md) — label nodes Root/Inner/Leaf via CASE with `id IN (SELECT p_id)`; needed hints for the CASE-plus-subquery shape; trap: `NOT IN` against a NULL-bearing column classifies nothing.
 
+## Transformation: adjacent-swap via parity CASE (0/1 clean)
+- ⚠️ [LC 626: Exchange Seats](../areas/sql/lc-0626-exchange-seats.md) — swap consecutive students by remapping id with a parity CASE (`odd → id+1`, `even → id-1`) and sorting on the new key; boundary = odd last id via membership subquery; had to see the approach once; trap: leftover GROUP BY and missing ORDER BY on the remapped id.
+
 ## Aggregation: duplicate vs unique classification (0/1 clean)
 - ⚠️ [LC 585: Investments in 2016](../areas/sql/lc-0585-investments-in-2016.md) — HAVING COUNT > 1 / = 1 to build duplicated- and unique-value sets, tuple `(lat, lon) IN` membership; solved unassisted but only one day after studying the solution — needs a cold re-solve.

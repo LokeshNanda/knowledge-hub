@@ -78,6 +78,7 @@ When the problem anchors to a *first* event, compare against `MIN()` per group �
 
 ## Similar problems in vault
 - [LC 570: Managers with at Least 5 Direct Reports](./lc-0570-managers-with-at-least-5-direct-reports.md) — also per-entity aggregation, but a simple count threshold via self-join instead of a first-event anchor.
+- [LC 626: Exchange Seats](./lc-0626-exchange-seats.md) — another neighboring-row problem; its window-function variant uses the same LEAD/LAG machinery misused here, while its canonical solution avoids windows entirely by remapping the id key.
 
 ## Solution
 ```sql

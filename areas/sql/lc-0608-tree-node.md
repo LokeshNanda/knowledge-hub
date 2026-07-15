@@ -61,6 +61,7 @@ Why the `NULL` doesn't bite *here* but would in reverse: the `p_id` column conta
 ## Similar problems in vault
 - [LC 570: Managers with at Least 5 Direct Reports](./lc-0570-managers-with-at-least-5-direct-reports.md) — same self-referencing parent key (`managerId` → `id` vs `p_id` → `id`); there the child side is aggregated per parent, here mere existence of a child decides a label.
 - [LC 585: Investments in 2016](./lc-0585-investments-in-2016.md) — same "build a value set with a subquery, filter rows by `IN` membership" machinery, used in `WHERE` to filter rows rather than in `CASE` to label them.
+- [LC 626: Exchange Seats](./lc-0626-exchange-seats.md) — same membership subquery inside a `CASE`; there it guards the boundary of a parity-based id swap instead of assigning a label.
 
 ## Solution
 ```sql
