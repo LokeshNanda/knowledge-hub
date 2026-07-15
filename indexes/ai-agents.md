@@ -1,6 +1,10 @@
 # AI & Agents — map of content
 
-_Last regenerated: 2026-07-11_
+_Last regenerated: 2026-07-15_
+
+## Agentic development practices
+
+- [AI-native development — how frontier teams restructure around agents](../areas/ai-agents/ai-native-development-practices.md) — AWS's three adoption paths (in-situ, sprint, pathfinder) and five practices (agent context, spec-first, feed-don't-babysit, shift-left testing) behind 4.5x–10x reported gains. `seed`
 
 ## Fine-tuning
 
