@@ -63,6 +63,7 @@ Nothing cost time this round, but the trap to avoid: **don't compare composite k
 ## Similar problems in vault
 - [LC 570: Managers with at Least 5 Direct Reports](./lc-0570-managers-with-at-least-5-direct-reports.md) — same GROUP BY / HAVING membership-set machinery, there used to find keys with ≥ N children rather than to split duplicated vs unique values.
 - [LC 608: Tree Node](./lc-0608-tree-node.md) — same subquery-membership machinery, used inside a `CASE` to label rows instead of inside `WHERE` to filter them.
+- [LC 1045: Customers Who Bought All Products](./lc-1045-customers-who-bought-all-products.md) — HAVING COUNT again, but compared against an external set's cardinality to test "bought all" (relational division) instead of classifying duplicated vs unique.
 
 ## Solution
 ```sql

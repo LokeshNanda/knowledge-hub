@@ -9,6 +9,9 @@ Tally per pattern: clean / total.
 ## Aggregation: group-by / having on a key (1/1 clean)
 - ✅ [LC 570: Managers with at Least 5 Direct Reports](../areas/sql/lc-0570-managers-with-at-least-5-direct-reports.md) — self-join on managerId, HAVING COUNT ≥ 5; first attempt grouped by name instead of id (non-unique names merge entities), self-corrected fast.
 
+## Relational division: entity matches ALL of a set (1/1 clean)
+- ✅ [LC 1045: Customers Who Bought All Products](../areas/sql/lc-1045-customers-who-bought-all-products.md) — per-customer `COUNT(DISTINCT product_key)` compared to total product count via HAVING; `DISTINCT` is load-bearing (duplicate purchases must not fake completeness); minor slack: redundant IN-filter and derived-table wrapper.
+
 ## Reshaping: UNION ALL unpivot + aggregate (1/1 clean)
 - ✅ [LC 602: Friend Requests II — Who Has the Most Friends](../areas/sql/lc-0602-friend-requests-ii-most-friends.md) — stack requester/accepter columns with UNION ALL, GROUP BY, top-1; trap: plain UNION dedupes and breaks the count.
 
