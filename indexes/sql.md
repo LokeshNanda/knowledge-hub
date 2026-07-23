@@ -3,8 +3,9 @@
 Organized by pattern. ✅ = clean unaided solve, ⚠️ = struggled / needed help.
 Tally per pattern: clean / total.
 
-## Aggregation: first-event anchor (0/1 clean)
+## Aggregation: first-event anchor (1/2 clean)
 - ⚠️ [LC 550: Game Play Analysis IV](../areas/sql/lc-0550-game-play-analysis-iv.md) — day-after-first-login retention; used LEAD over any adjacent pair instead of anchoring to MIN(event_date), plus `date + 1` integer-arithmetic trap.
+- ✅ [LC 1070: Product Sales Analysis III](../areas/sql/lc-1070-product-sales-analysis-iii.md) — rows at each product's first sale year; anchor via GROUP BY + MIN(year), filter with tuple `(product_id, year) IN`; window alternative needs RANK, not ROW_NUMBER (first-year ties must survive).
 
 ## Aggregation: group-by / having on a key (1/1 clean)
 - ✅ [LC 570: Managers with at Least 5 Direct Reports](../areas/sql/lc-0570-managers-with-at-least-5-direct-reports.md) — self-join on managerId, HAVING COUNT ≥ 5; first attempt grouped by name instead of id (non-unique names merge entities), self-corrected fast.

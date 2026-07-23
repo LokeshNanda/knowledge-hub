@@ -64,6 +64,7 @@ Nothing cost time this round, but the trap to avoid: **don't compare composite k
 - [LC 570: Managers with at Least 5 Direct Reports](./lc-0570-managers-with-at-least-5-direct-reports.md) — same GROUP BY / HAVING membership-set machinery, there used to find keys with ≥ N children rather than to split duplicated vs unique values.
 - [LC 608: Tree Node](./lc-0608-tree-node.md) — same subquery-membership machinery, used inside a `CASE` to label rows instead of inside `WHERE` to filter them.
 - [LC 1045: Customers Who Bought All Products](./lc-1045-customers-who-bought-all-products.md) — HAVING COUNT again, but compared against an external set's cardinality to test "bought all" (relational division) instead of classifying duplicated vs unique.
+- [LC 1070: Product Sales Analysis III](./lc-1070-product-sales-analysis-iii.md) — same tuple `(a, b) IN (subquery)` row-constructor trick, there matching each product's `(product_id, MIN(year))` anchor instead of detecting duplicate locations.
 
 ## Solution
 ```sql
