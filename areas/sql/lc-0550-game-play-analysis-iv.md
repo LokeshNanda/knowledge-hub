@@ -80,6 +80,7 @@ When the problem anchors to a *first* event, compare against `MIN()` per group �
 - [LC 570: Managers with at Least 5 Direct Reports](./lc-0570-managers-with-at-least-5-direct-reports.md) — also per-entity aggregation, but a simple count threshold via self-join instead of a first-event anchor.
 - [LC 626: Exchange Seats](./lc-0626-exchange-seats.md) — another neighboring-row problem; its window-function variant uses the same LEAD/LAG machinery misused here, while its canonical solution avoids windows entirely by remapping the id key.
 - [LC 1070: Product Sales Analysis III](./lc-1070-product-sales-analysis-iii.md) — same first-event anchor (`MIN(year)` per product); there the anchor filters full rows via a tuple `IN` instead of feeding a next-day existence check.
+- [LC 1158: Market Analysis I](./lc-1158-market-analysis-i.md) — same "aggregate facts by a date condition per entity" family, and the same non-sargable date-function smell (`date + 1` here, `YEAR()` there).
 
 ## Solution
 ```sql

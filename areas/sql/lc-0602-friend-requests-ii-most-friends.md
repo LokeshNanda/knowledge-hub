@@ -62,6 +62,7 @@ Solved cleanly, but the trap the pattern hides: **`UNION` instead of `UNION ALL`
 ## Similar problems in vault
 - [LC 570: Managers with at Least 5 Direct Reports](./lc-0570-managers-with-at-least-5-direct-reports.md) — also a per-entity appearance count via `GROUP BY` on an id column; there the entity sits in one foreign-key column, here it must first be unpivoted out of two.
 - [LC 1045: Customers Who Bought All Products](./lc-1045-customers-who-bought-all-products.md) — also a per-entity aggregate, but testing whether the distinct count covers a whole external set (relational division) rather than ranking for the max.
+- [LC 1158: Market Analysis I](./lc-1158-market-analysis-i.md) — another per-entity `COUNT(*)`, but every entity must appear even with zero matches, so the count rides on a LEFT JOIN instead of a plain GROUP BY.
 
 ## Solution
 ```sql
