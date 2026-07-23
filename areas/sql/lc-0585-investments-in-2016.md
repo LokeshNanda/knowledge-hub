@@ -4,13 +4,15 @@ area: sql
 tags: [sql, group-by-having, duplicate-detection, tuple-comparison, difficulty-medium]
 source: "https://leetcode.com/problems/investments-in-2016/"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-23
 status: seed
 solved_unaided: partially
 time_taken_min:
 ---
 
 # LC 585: Investments in 2016
+
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-0585-investments-in-2016.md)
 
 **Problem:** From `Insurance(pid, tiv_2015, tiv_2016, lat, lon)`, report the sum of `tiv_2016` (rounded to 2 decimals) over policyholders who (a) share their `tiv_2015` value with at least one other policyholder, and (b) sit at a location `(lat, lon)` no other policyholder occupies.
 

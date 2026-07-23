@@ -4,13 +4,15 @@ area: sql
 tags: [sql, union-all, unpivot, group-by, top-n, difficulty-medium]
 source: "https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-23
 status: seed
 solved_unaided: yes
 time_taken_min:
 ---
 
 # LC 602: Friend Requests II — Who Has the Most Friends
+
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-0602-friend-requests-ii-most-friends.md)
 
 **Problem:** `RequestAccepted(requester_id, accepter_id, accept_date)` records accepted friend requests. Friendship is mutual — one accepted row makes *both* people a friend of the other. Return the id with the most friends and that count (the test data guarantees a unique answer).
 

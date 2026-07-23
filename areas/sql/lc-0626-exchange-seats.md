@@ -4,13 +4,15 @@ area: sql
 tags: [sql, case-when, parity, adjacent-swap, key-remapping, membership-subquery, difficulty-medium]
 source: "https://leetcode.com/problems/exchange-seats/"
 created: 2026-07-15
-updated: 2026-07-15
+updated: 2026-07-23
 status: seed
 solved_unaided: no
 time_taken_min:
 ---
 
 # LC 626: Exchange Seats
+
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-0626-exchange-seats.md)
 
 **Problem:** `Seat(id, student)` with consecutive ids starting at 1. Swap the seats of every two consecutive students (1↔2, 3↔4, …). If the student count is odd, the last student stays put. Return rows ordered by id.
 

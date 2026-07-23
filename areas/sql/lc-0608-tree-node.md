@@ -4,13 +4,15 @@ area: sql
 tags: [sql, case-when, conditional-classification, membership-subquery, self-reference, null-handling, difficulty-medium]
 source: "https://leetcode.com/problems/tree-node/"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-23
 status: seed
 solved_unaided: partially
 time_taken_min:
 ---
 
 # LC 608: Tree Node
+
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-0608-tree-node.md)
 
 **Problem:** `Tree(id, p_id)` stores a tree as an adjacency list — each row is a node pointing at its parent. Label every node `Root` (no parent), `Inner` (has a parent *and* is a parent of someone), or `Leaf` (has a parent, is nobody's parent).
 

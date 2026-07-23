@@ -17,6 +17,7 @@ Technical learning only:
 | `areas/databases-internals/` | Storage engines, indexing, transactions, replication, how DBs work inside |
 | `areas/cloud/gcp/`, `areas/cloud/aws/`, `areas/cloud/azure/` | Cloud services, architectures, certifications |
 | `areas/ai-agents/` | LLMs, agentic systems, fine-tuning, RAG, MCP, self-hosting models |
+| `areas/pyspark/` | PySpark DataFrame-API companions to the SQL problems, Spark idioms and gotchas |
 
 If material clearly belongs to none of these, ask the user rather than inventing
 a new top-level area. New areas are a human decision.
@@ -51,6 +52,7 @@ status: seed | growing | evergreen
 - `status` meaning: `seed` = raw summary, unreviewed; `growing` = revisited at least once, has links; `evergreen` = distilled, trusted, interview-ready.
 - Cross-link related notes with relative markdown links: `[LSM compaction](../databases-internals/lsm-compaction.md)`. Wiki-style `[[links]]` are also acceptable (Obsidian-compatible) but be consistent within a note.
 - Standard note body structure is defined in `templates/note.md`. LeetCode entries use `templates/leetcode-entry.md`.
+- **PySpark pairing rule:** every LeetCode SQL note in `areas/sql/` gets a companion note in `areas/pyspark/` with the *same filename*, written from `templates/pyspark-entry.md`. Claude authors the PySpark translation (the SQL note holds the problem statement and the user's honest solve review; the companion holds only the SQL→DataFrame mapping, idiomatic solution, and Spark-specific gotchas). Cross-link both ways (`**PySpark companion:**` line in the SQL note, `**SQL companion:**` line in the PySpark note) and update `indexes/pyspark.md` in the same session — whenever a new SQL problem is ingested, the companion is created in that same session.
 - Write summaries in your own words. Quote sources sparingly (short fragments only) and always attribute. A note should teach the concept, not mirror the source's structure.
 
 ## Hard rules

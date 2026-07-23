@@ -4,13 +4,15 @@ area: sql
 tags: [sql, relational-division, group-by-having, count-distinct, difficulty-medium]
 source: "https://leetcode.com/problems/customers-who-bought-all-products/"
 created: 2026-07-16
-updated: 2026-07-16
+updated: 2026-07-23
 status: seed
 solved_unaided: yes
 time_taken_min:
 ---
 
 # LC 1045: Customers Who Bought All Products
+
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-1045-customers-who-bought-all-products.md)
 
 **Problem:** Given `Customer(customer_id, product_key)` (with possible duplicate rows) and `Product(product_key)` listing every product, return the ids of customers who bought *every* product in `Product`.
 

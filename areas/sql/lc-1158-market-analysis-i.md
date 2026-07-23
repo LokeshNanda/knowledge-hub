@@ -12,6 +12,8 @@ time_taken_min:
 
 # LC 1158: Market Analysis I
 
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-1158-market-analysis-i.md)
+
 **Problem:** Given `Users(user_id, join_date, favorite_brand)` and `Orders(order_id, order_date, item_id, buyer_id, seller_id)`, return *every* user's `user_id` (as `buyer_id`), `join_date`, and how many orders they placed as a buyer in 2019 — including users with zero such orders.
 
 ## Pattern

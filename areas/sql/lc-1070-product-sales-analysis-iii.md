@@ -12,6 +12,8 @@ time_taken_min:
 
 # LC 1070: Product Sales Analysis III
 
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-1070-product-sales-analysis-iii.md)
+
 **Problem:** Given `Sales(sale_id, product_id, year, quantity, price)`, return `product_id, first_year, quantity, price` for every sale that happened in the *first year* each product was sold. A product can have several sales rows in its first year — all of them must appear.
 
 ## Pattern

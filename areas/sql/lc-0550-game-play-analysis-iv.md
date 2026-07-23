@@ -4,13 +4,15 @@ area: sql
 tags: [sql, window-functions, first-event-anchor, date-arithmetic, difficulty-medium]
 source: "https://leetcode.com/problems/game-play-analysis-iv/"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-23
 status: seed
 solved_unaided: no
 time_taken_min:
 ---
 
 # LC 550: Game Play Analysis IV
+
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-0550-game-play-analysis-iv.md)
 
 **Problem:** Report the fraction of players who logged in again on the day *right after their first login day*, rounded to 2 decimals.
 

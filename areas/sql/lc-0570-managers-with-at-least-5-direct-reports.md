@@ -4,13 +4,15 @@ area: sql
 tags: [sql, self-join, group-by-having, group-by-key, difficulty-medium]
 source: "https://leetcode.com/problems/managers-with-at-least-5-direct-reports/"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-23
 status: seed
 solved_unaided: yes
 time_taken_min:
 ---
 
 # LC 570: Managers with at Least 5 Direct Reports
+
+**PySpark companion:** [same problem in the DataFrame API](../pyspark/lc-0570-managers-with-at-least-5-direct-reports.md)
 
 **Problem:** From a single `Employee(id, name, department, managerId)` table, return the names of managers who have at least five direct reports.
 

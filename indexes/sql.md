@@ -3,6 +3,8 @@
 Organized by pattern. ✅ = clean unaided solve, ⚠️ = struggled / needed help.
 Tally per pattern: clean / total.
 
+Every problem here has a PySpark companion note — see [the PySpark index](./pyspark.md).
+
 ## Aggregation: first-event anchor (1/2 clean)
 - ⚠️ [LC 550: Game Play Analysis IV](../areas/sql/lc-0550-game-play-analysis-iv.md) — day-after-first-login retention; used LEAD over any adjacent pair instead of anchoring to MIN(event_date), plus `date + 1` integer-arithmetic trap.
 - ✅ [LC 1070: Product Sales Analysis III](../areas/sql/lc-1070-product-sales-analysis-iii.md) — rows at each product's first sale year; anchor via GROUP BY + MIN(year), filter with tuple `(product_id, year) IN`; window alternative needs RANK, not ROW_NUMBER (first-year ties must survive).
